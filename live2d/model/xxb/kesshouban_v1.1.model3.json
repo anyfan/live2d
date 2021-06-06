@@ -1,0 +1,90 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "kesshouban_v1.1.moc3",
+    "Textures": [
+      "kesshouban_v1.1.4096/texture_00.png"
+    ],
+    "Physics": "kesshouban_v1.1.physics3.json",
+    "PhysicsV2": {
+      "File": "kesshouban_v1.1.physics3.json"
+    },
+    "Motions": {
+      "Idle": [
+        {
+          "File": "Idle.motion3.json",
+          "FileLoop": true
+        }
+      ],
+      "sleepy": [
+        {
+          "File": "Nemui.motion3.json",
+          "FileLoop": true
+        }
+      ],
+      "Tap_head": [
+        {
+          "File": "Anone_Synced.motion3.json"
+        }
+      ],
+      "Tap_body": [
+        {
+          "File": "Dance.motion3.json"
+        }
+      ]
+    }
+  },
+  "Controllers": {
+    "ParamHit": {},
+    "ParamLoop": {},
+    "KeyTrigger": {},
+    "ParamTrigger": {},
+    "EyeBlink": {
+      "MinInterval": 500,
+      "MaxInterval": 6000,
+      "Enabled": true
+    },
+    "LipSync": {
+      "Gain": 5.0
+    },
+    "MouseTracking": {
+      "SmoothTime": 0.15,
+      "Enabled": true
+    },
+    "AutoBreath": {
+      "Enabled": true
+    },
+    "ExtraMotion": {
+      "Enabled": true
+    },
+    "Accelerometer": {
+      "Enabled": true
+    },
+    "Microphone": {},
+    "Transform": {},
+    "FaceTracking": {
+      "Enabled": true
+    },
+    "ParamValue": {},
+    "PartOpacity": {},
+    "ArtmeshOpacity": {},
+    "ArtmeshColor": {},
+    "ArtmeshCulling": {
+      "DefaultMode": 0
+    },
+    "IntimacySystem": {}
+  },
+  "HitAreas": [
+    {
+      "Name": "face",
+      "Id": "face",
+      "Motion": "Tap_head"
+    },
+    {
+      "Name": "shirt_main",
+      "Id": "shirt_main",
+      "Motion": "Tap_body"
+    }
+  ],
+  "Options": {}
+}
