@@ -12,24 +12,28 @@
     "Motions": {
       "Idle": [
         {
+          "Name": "Idle",
           "File": "Idle.motion3.json",
-          "FileLoop": true
-        }
-      ],
-      "sleepy": [
-        {
-          "File": "Nemui.motion3.json",
           "FileLoop": true
         }
       ],
       "Tap_head": [
         {
-          "File": "Anone_Synced.motion3.json"
+          "File": "Anone_Synced.motion3.json",
+          "NextMtn": "Idle:Idle"
         }
       ],
       "Tap_body": [
         {
-          "File": "Dance.motion3.json"
+          "File": "Dance.motion3.json",
+          "NextMtn": "Idle:Idle"
+        }
+      ],
+      "sleep": [
+        {
+          "Name": "sleep",
+          "File": "Nemui.motion3.json",
+          "FileLoop": true
         }
       ]
     }
@@ -51,9 +55,7 @@
       "SmoothTime": 0.15,
       "Enabled": true
     },
-    "AutoBreath": {
-      "Enabled": true
-    },
+    "AutoBreath": {},
     "ExtraMotion": {
       "Enabled": true
     },

@@ -44,8 +44,13 @@ if (!isMobile()) {
         loadExternalResource(xxb_url + "live2d.min.js", "js"),
         // loadExternalResource(xxb_url + "live2d-1.js", "js"),
         // loadExternalResource(xxb_url + "live2d.js", "js"),
-        loadExternalResource(xxb_url + "platelet.js", "js")
+        // loadExternalResource(xxb_url + "platelet.js", "js")
     ]).then(() => {
+
+
+
+
+
         xxb_init()
         // initWidget({
         //     waifuPath: live2d_path + "waifu-tips.json",
