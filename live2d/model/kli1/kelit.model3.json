@@ -1,0 +1,150 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "kelit.moc3",
+		"Textures": [
+			"kelit.8192/texture_00.png"
+		],
+		"Physics": "kelit.physics3.json",
+		"Motions": {
+			"Tap": [
+			  {
+				"Name": "这可不是瞎说的",
+				"File": "motions/这可不是瞎说的.motion3.json",
+				"Sound": "sounds/这可不是瞎说的.wav",
+				"SoundDelay": 500
+			  },
+			  {
+				"Name": "你是可莉的伙伴吗",
+				"File": "motions/你是可莉的玩伴吧.motion3.json",
+				"Sound": "sounds/你是可莉的玩伴吧.wav"
+			  },
+			  {
+				"Name": "你好你是可莉的伙伴吗",
+				"File": "motions/你好，你是可莉的伙伴吗.motion3.json",
+				"Sound": "sounds/你好，你是来找可莉玩的吗.wav"
+			  },
+			  {
+				"Name": "看我做的好不好",
+				"File": "motions/你看我做的好不好.motion3.json",
+				"Sound": "sounds/这个是可莉最新研制的炸弹.wav"
+			  },
+			  {
+				"Name": "午饭时间到了",
+				"File": "motions/午饭时间到了.motion3.json",
+				"Sound": "sounds/午饭时间到了.wav"
+			  },
+			  {
+				"Name": "可莉不要剥壳",
+				"File": "motions/可莉不要剥壳.motion3.json",
+				"Sound": "sounds/可莉不要剥壳.wav"
+			  },
+			  {
+				"Name": "可莉报告",
+				"File": "motions/可莉报告.motion3.json",
+				"Sound": "sounds/可莉报告.wav",
+				"SoundDelay": 50
+			  },
+			  {
+				"Name": "我们一起去冒险",
+				"File": "motions/和可莉来冒险吧.motion3.json",
+				"Sound": "sounds/我们一起去冒险.wav"
+			  },
+			  {
+				"Name": "不被关禁闭的话就更好了",
+				"File": "motions/如果不被关禁闭的话就更好了.motion3.json",
+				"Sound": "sounds/如果不被关禁闭的话就更好了.wav"
+			  },
+			  {
+				"Name": "带我出去玩~",
+				"File": "motions/带我出去玩.motion3.json",
+				"Sound": "sounds/带可莉出去玩~.wav"
+			  },
+			  {
+				"Name": "找你出去玩",
+				"File": "motions/找你出去玩.motion3.json",
+				"Sound": "sounds/找你出去玩.wav"
+			  },
+			  {
+				"Name": "解决麻烦",
+				"File": "motions/谢谢你总是帮可莉解决麻烦.motion3.json",
+				"Sound": "sounds/谢谢你总是帮可莉解决麻烦.wav"
+			  },
+			  {
+				"Name": "这次炸弹是防水的",
+				"File": "motions/这次的炸弹可是防水的.motion3.json",
+				"Sound": "sounds/这次的炸弹可是防水的.wav"
+			  }
+			],
+			"Start": [
+			  {
+				"File": "motions/这次的炸弹可是防水的.motion3.json",
+				"Sound": "sounds/这次的炸弹可是防水的.wav"
+			  }
+			]
+		  }
+		},
+		"Controllers": {
+		  "ParamHit": {},
+		  "ParamLoop": {},
+		  "KeyTrigger": {},
+		  "EyeBlink": {
+			"MinInterval": 500,
+			"MaxInterval": 6000,
+			"Items": [
+			  {
+				"Id": "ParamEyeLOpen",
+				"Min": 0.0,
+				"Max": 1.0,
+				"BlendMode": 2,
+				"Input": 0
+			  }
+			],
+			"Enabled": true
+		  },
+		  "LipSync": {
+			"Gain": 5.0,
+			"Items": [
+			  {
+				"Id": "ParamMouthForm",
+				"Min": 0.0,
+				"Max": 1.0,
+				"Input": 0
+			  },
+			  {
+				"Id": "ParamMouthOpenY",
+				"Min": 0.0,
+				"Max": 1.0,
+				"Input": 0
+			  }
+			]
+		  },
+		  "MouseTracking": {
+			"SmoothTime": 0.15,
+			"Enabled": true
+		  },
+		  "AutoBreath": {
+			"Enabled": true
+		  },
+		  "ExtraMotion": {
+			"Enabled": true
+		  },
+		  "Accelerometer": {
+			"Enabled": true
+		  },
+		  "Microphone": {},
+		  "Transform": {},
+		  "FaceTracking": {
+			"Enabled": true
+		  },
+		  "ParamValue": {},
+		  "PartOpacity": {},
+		  "ArtmeshOpacity": {},
+		  "ArtmeshColor": {},
+		  "ArtmeshCulling": {
+			"DefaultMode": 0
+		  },
+		  "IntimacySystem": {}
+		},
+		"Options": {}
+}
