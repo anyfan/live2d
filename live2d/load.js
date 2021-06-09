@@ -49,7 +49,9 @@ const initConfig = {
   night: "toggleNightMode()",
   model: [
     "live2d/model/xxb/kesshouban_v1.1.model3.json",
-    "live2d/model/Diana/Diana.model3.json"
+    "live2d/model/Diana/Diana.model3.json",
+    "live2d/model/kli1/kelit.model3.json",
+    "live2d/model/paimeng/paimeng.model3.json",
   ],
   tips: true,
   onModelLoad: onModelLoad
@@ -239,15 +241,15 @@ function onModelLoad(model) {
   }
 
 
-    const live2d = PIXI.live2d;
-    const hitAreaFrames = new live2d.HitAreaFrames();
-    model.addChild(hitAreaFrames);
+    // const live2d = PIXI.live2d;
+    // const hitAreaFrames = new live2d.HitAreaFrames();
+    // model.addChild(hitAreaFrames);
 
-    const foreground = PIXI.Sprite.from(PIXI.Texture.WHITE);
-    foreground.width = model.internalModel.width;
-    foreground.height = model.internalModel.height;
-    foreground.alpha = 0.2;
-    model.addChild(foreground);
+    // const foreground = PIXI.Sprite.from(PIXI.Texture.WHITE);
+    // foreground.width = model.internalModel.width;
+    // foreground.height = model.internalModel.height;
+    // foreground.alpha = 0.2;
+    // model.addChild(foreground);
 
 
 }

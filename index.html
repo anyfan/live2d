@@ -1,17 +1,36 @@
-<canvas id=canvas></canvas>
+<html>
 
+<head>
+    <link href="live2d/pio.css" rel="stylesheet" type="text/css" />
+</head>
 
-<!-- Copyrighted cubism SDK -->
-<!-- <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script> -->
-<script src="/asset/live2dcubismcore.min.js"></script>
-<!-- Load Pixi (dependency for cubism 2/4 integrated loader) -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/pixi.js@5.3.6/dist/pixi.min.js"></script> -->
-<script src="/asset/pixi.min.js"></script>
-<!-- Load cubism 4 integrated loader -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display@0.3.1/dist/cubism4.min.js"></script> -->
-<script src="/asset/cubism4.min.js"></script>
+<body>
 
 
 
-<!-- Load pio and alternative loader -->
-<script src="/poster_girl.js"></script>
+    <!-- Copyrighted cubism SDK -->
+    <!-- <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script> -->
+    <script src="/asset/live2dcubismcore.min.js"></script>
+    <!-- Load Pixi (dependency for cubism 2/4 integrated loader) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/pixi.js@5.3.6/dist/pixi.min.js"></script> -->
+    <script src="/asset/pixi.min.js"></script>
+    <!-- Load cubism 4 integrated loader -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display@0.3.1/dist/cubism4.min.js"></script> -->
+    <script src="/asset/cubism4.min.js"></script>
+
+    <!-- Load pio and alternative loader -->
+    <script src="/poster_girl.js"></script>
+
+    <script>
+        const initConfig = {
+            model: [
+                "live2d/model/xxb/kesshouban_v1.1.model3.json", 
+                "live2d/model/Diana/Diana.model3.json"
+            ]
+        }
+        new Paul_Pio(initConfig)
+    </script>
+
+</body>
+
+</html>

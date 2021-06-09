@@ -1,15 +1,10 @@
-function l2d(json_object_or_url) {
-    PIXI.live2d.Live2DModel.fromSync(json_object_or_url)
-}
-
-
 function load_xxb() {
     // 加载血小板时清除一些参数
     localStorage.removeItem("platelet-display");
     sessionStorage.removeItem("platelet-text");
 
     // 写入血小板结构组件
-    document.body.insertAdjacentHTML("beforeend", `  
+    document.body.insertAdjacentHTML("beforee nd", `  
         <div id="platelet">
         <div id="platelet-tips"></div>
         <div class ='live2d' >
@@ -22,14 +17,7 @@ function load_xxb() {
         <a href="https://www.anyfan.top/archives/106/" style='text-decoration:none;'><i class="fa fa-info info" style="animation-delay: 1.5s;"></i></a>
         <i class="fa fa-times xxbclose" style="animation-delay: 2s;"></i>
         </div>
-    </div>`);
-
-    // 血小板出现动画
-    setTimeout(() => {
-        document.getElementById("platelet").style.bottom = 0;
-    }, 0);
-
-
+    </div>`)
     // 血小板关闭
     document.querySelector(".platelet-tool .xxbclose").addEventListener("click", () => {
         localStorage.setItem("platelet-display", Date.now());
@@ -79,10 +67,7 @@ function load_xxb() {
         .then(response => response.json())
         .then(result => {
             window.addEventListener("mouseover", event => {
-                for (let {
-                        selector,
-                        text
-                    } of result.mouseover) {
+                for (let {selector,text} of result.mouseover) {
                     if (!event.target.matches(selector)) continue;
                     text = randomSelection(text);
                     text = text.replace("{text}", event.target.innerText);

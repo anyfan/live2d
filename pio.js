@@ -30,9 +30,9 @@ var Paul_Pio = function (prop) {
             return current.idol;
         },
         // 创建内容
-        create: function (tag, prop) {
+        create: function (tag, tag_class) {
             var e = document.createElement(tag);
-            if (prop.class) e.className = prop.class;
+            if (tag_class.class) e.className = tag_class.class;
             return e;
         },
         // 随机内容
