@@ -19,14 +19,12 @@
       ],
       "Tap_head": [
         {
-          "File": "Anone_Synced.motion3.json",
-          "NextMtn": "Idle:Idle"
+          "File": "Anone_Synced.motion3.json"
         }
       ],
       "Tap_body": [
         {
-          "File": "Dance.motion3.json",
-          "NextMtn": "Idle:Idle"
+          "File": "Dance.motion3.json"
         }
       ],
       "sleep": [
@@ -83,7 +81,7 @@
       "Motion": "Tap_head"
     },
     {
-      "Name": "shirt_main",
+      "Name": "shirt",
       "Id": "shirt_main",
       "Motion": "Tap_body"
     }
