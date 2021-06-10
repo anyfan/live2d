@@ -41,7 +41,7 @@ var Paul_Pio = function (prop) {
             return arr[Math.floor(Math.random() * arr.length + 1) - 1];
         },
         // 创建对话框方法
-        render: function (text) {
+        render: function (text, TextDelay, TextDuration) {
             if (text.constructor === Array) {
                 dialog.innerHTML = modules.rand(text);
             } else if (text.constructor === String) {
@@ -50,12 +50,20 @@ var Paul_Pio = function (prop) {
                 dialog.innerHTML = "输入内容出现问题了 X_X";
             }
 
-            dialog.classList.add("active");
+            if (TextDelay || TextDuration) {
+                clearTimeout(this.Delay);
+            } else {
+                TextDelay = 0;
+                TextDuration = 3000;
+                clearTimeout(this.Delay);
+            }
+            this.Delay = setTimeout(function () {
+                dialog.classList.add("active");
+                setTimeout(function () {
+                    dialog.classList.remove("active");
+                }, TextDuration);
+            }, TextDelay);
 
-            clearTimeout(this.t);
-            this.t = setTimeout(function () {
-                dialog.classList.remove("active");
-            }, 3000);
         },
         // 移除方法
         destroy: function () {
@@ -232,7 +240,10 @@ var Paul_Pio = function (prop) {
     async function loadlive2d(Modelurl) {
         const live2d = PIXI.live2d;
         const model = await live2d.Live2DModel.from(Modelurl);
-        const model_settings = model.internalModel.settings;
+        const internalModel = model.internalModel;
+        const motionManager = internalModel.motionManager;
+        const settings = internalModel.settings;
+        let motion_flag = 1;
         let canvas = current.canvas;
         // Try to remove previous model, if any exists.
         try {
@@ -245,16 +256,54 @@ var Paul_Pio = function (prop) {
         model.scale.set(canvas.height / model.height);
         canvas.width = model.width;
         canvas.height = model.height;
+        // console.log(motionManager.state)
+        console.log(internalModel)
+        // console.log(motionManager.state.currentGroup)
+
+        // if (!(motionManager.state.currentGroup == "Idle")) {
         // handle tapping
         model.on("hit", hitAreas => {
-            model_settings.hitAreas.forEach(Areas => {
-                if (hitAreas.includes(Areas.Name)) {
-                    model.motion(Areas.Motion);
-                }
+            let hitA
+            hitAreas.forEach(t => {
+                settings.hitAreas.forEach(Areas => {
+                    if (Areas.Name == t) {
+                        if (hitA == null) {
+                            hitA = Areas;
+                        }
+                        let num1 = 0,
+                            num2 = 0;
+                        if ("Order" in Areas) {
+                            num1 = Areas.Order
+                        }
+                        if ("Order" in hitA) {
+                            num2 = hitA.Order
+                        }
+                        if (num1 >= num2) {
+                            hitA = Areas;
+                        }
+                    }
+                });
 
-            });
+            })
+            if (motion_flag) {
+                var motion = hitA.Motion;
+                var t = Math.floor(Math.random() * settings.motions[motion].length);
+                var action = settings.motions[motion][t];
+                model.motion(motion, t);
+                motion_flag = 0;
+                if (action.Text) {
+                    modules.render(action.Text, action.TextDelay, action.TextDuration);
+                }
+                motionManager.once("motionFinish", (data) => {
+                    motion_flag = 1;
+
+                })
+                console.log(hitA)
+            }
+
 
         });
+
 
         function addFrame(model) {
             const foreground = PIXI.Sprite.from(PIXI.Texture.WHITE);
@@ -273,8 +322,8 @@ var Paul_Pio = function (prop) {
 
         // addFrame(model);
         addHitAreaFrames(model);
-        console.log(model)
-        console.log(model_settings)
+        // console.log(model)
+        console.log(settings)
     };
 
     // 模型初始化

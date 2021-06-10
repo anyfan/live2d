@@ -211,6 +211,7 @@
     {
       "Name": "= =  左蝴蝶结",
       "Id": "ArtMesh15",
+      "Order": 1,
       "Motion": "Tap= =  左蝴蝶结"
     },
     {
@@ -227,6 +228,7 @@
     {
       "Name": "生气 -领结",
       "Id": "ArtMesh56",
+      "Order": 1,
       "Motion": "Tap生气 -领结"
     },
     {
@@ -237,6 +239,7 @@
     {
       "Name": "抱阿草-左手",
       "Id": "L4",
+      "Order": 1,
       "Motion": "Tap抱阿草-左手"
     },
     {
@@ -247,6 +250,7 @@
     {
       "Name": "耳朵-发卡",
       "Id": "L3",
+      "Order": 1,
       "Motion": "Tap耳朵-发卡"
     },
     {
