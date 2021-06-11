@@ -1,13 +1,16 @@
 {
-    "mouseover": [
-        {
-            "selector": ".platelet-tool .home",
+    "model": [
+        "live2d/model/xxb/kesshouban_v1.1.model3.json",
+        "live2d/model/Diana/Diana.model3.json"
+    ],
+    "mouseover": [{
+            "selector": ".pio-action .pio-home",
             "text": [
                 "点击这里回到首页！",
                 "点它就可以回到首页啦！",
                 "回首页看看吧。"
             ]
-        },        
+        },
         {
             "selector": ".platelet-tool .comment",
             "text": [
@@ -15,26 +18,27 @@
             ]
         },
         {
-            "selector": ".platelet-tool .fa-street-view",
+            "selector": ".pio-action .pio-skin",
             "text": [
                 "我觉得这件衣服还挺好看的。",
                 "变身魔法可真是难学呢。"
             ]
         },
         {
-            "selector": ".platelet-tool .info",
+            "selector": ".pio-action .pio-info",
             "text": [
                 "想了解更多关于我的信息吗？"
             ]
         },
         {
-            "selector": ".platelet-tool .xxbclose",
+            "selector": ".pio-action .pio-close",
             "text": [
                 "到了要说再见的时候了吗？",
+                "QWQ 下次再见吧~",
                 "你是不是不爱人家了呀，呜呜呜～。",
-                "呜呜 QAQ 后会有期……", 
-                "不要抛弃我呀……", 
-                "我们，还能再见面吗……", 
+                "呜呜 QAQ 后会有期……",
+                "不要抛弃我呀……",
+                "我们，还能再见面吗……",
                 "哼，你会后悔的！"
             ]
         },
@@ -46,20 +50,17 @@
             ]
         }
     ],
-    "click": [
-        {
-            "selector": "#platelet #live2d",
-            "text": [
-                "是…是不小心碰到了吧",
-                "萝莉控是什么呀",
-                "你看到我的小熊了吗",
-                "再摸的话我可要报警了！<br>⌇●﹏●⌇",
-                "110吗，这里有个变态一直在摸我(ó﹏ò｡)"
-            ]
-        }
-    ],
-    "seasons": [
-        {
+    "click": [{
+        "selector": "#platelet #live2d",
+        "text": [
+            "是…是不小心碰到了吧",
+            "萝莉控是什么呀",
+            "你看到我的小熊了吗",
+            "再摸的话我可要报警了！<br>⌇●﹏●⌇",
+            "110吗，这里有个变态一直在摸我(ó﹏ò｡)"
+        ]
+    }],
+    "seasons": [{
             "date": "01/01",
             "text": "<span style=\"color:#0099cc;\">元旦</span>了呢，新的一年又开始了，{year}年打算做些什么呢~"
         },
@@ -89,6 +90,10 @@
         },
         {
             "date": "06/01",
+            "text": "<span style=\"color:#0099cc;\">儿童节</span>了呢，快活的时光总是短暂，要是永远长不大该多好啊…"
+        },
+        {
+            "date": "06/11",
             "text": "<span style=\"color:#0099cc;\">儿童节</span>了呢，快活的时光总是短暂，要是永远长不大该多好啊…"
         },
         {

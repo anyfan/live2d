@@ -1,5 +1,6 @@
 var Paul_Pio = function (prop) {
 
+    let cfg = {}
     // 写入结构组件
     document.body.insertAdjacentHTML("beforeend", `
     <div class="pio-container left" id="pio-container">
@@ -16,8 +17,6 @@ var Paul_Pio = function (prop) {
         root: document.location.protocol + '//' + document.location.hostname + '/'
     };
 
-
-
     const app = new PIXI.Application({
         view: current.canvas,
         autoStart: true,
@@ -28,7 +27,7 @@ var Paul_Pio = function (prop) {
     var modules = {
         // 更换模型
         idol: function () {
-            current.idol < (prop.model.length - 1) ? current.idol++ : current.idol = 0;
+            current.idol < (cfg.model.length - 1) ? current.idol++ : current.idol = 0;
             return current.idol;
         },
         create: function (tag, tag_class) {
@@ -59,7 +58,8 @@ var Paul_Pio = function (prop) {
             }
             this.Delay = setTimeout(function () {
                 dialog.classList.add("active");
-                setTimeout(function () {
+                clearTimeout(Duration)
+                var Duration = setTimeout(function () {
                     dialog.classList.remove("active");
                 }, TextDuration);
             }, TextDelay);
@@ -105,46 +105,55 @@ var Paul_Pio = function (prop) {
     };
 
     var dialog = elements.dialog;
-    current.body.appendChild(dialog);
 
 
 
     /* - 提示操作 */
     var action = {
         // // 欢迎
-        // welcome: function () {
-        //     if (document.referrer !== "" && document.referrer.indexOf(current.root) === -1) {
-        //         var referrer = document.createElement('a');
-        //         referrer.href = document.referrer;
-        //         prop.content.referer ? modules.render(prop.content.referer.replace(/%t/, "“" + referrer.hostname + "”")) : modules.render("欢迎来自 “" + referrer.hostname + "” 的朋友！");
-        //     } else if (prop.tips) {
-        //         var text, hour = new Date().getHours();
-
-        //         if (hour > 22 || hour <= 5) {
-        //             text = '你是夜猫子呀？这么晚还不睡觉，明天起的来嘛';
-        //         } else if (hour > 5 && hour <= 8) {
-        //             text = '早上好！';
-        //         } else if (hour > 8 && hour <= 11) {
-        //             text = '上午好！工作顺利嘛，不要久坐，多起来走动走动哦！';
-        //         } else if (hour > 11 && hour <= 14) {
-        //             text = '中午了，工作了一个上午，现在是午餐时间！';
-        //         } else if (hour > 14 && hour <= 17) {
-        //             text = '午后很容易犯困呢，今天的运动目标完成了吗？';
-        //         } else if (hour > 17 && hour <= 19) {
-        //             text = '傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红~';
-        //         } else if (hour > 19 && hour <= 21) {
-        //             text = '晚上好，今天过得怎么样？';
-        //         } else if (hour > 21 && hour <= 23) {
-        //             text = '已经这么晚了呀，早点休息吧，晚安~';
-        //         } else {
-        //             text = "奇趣保罗说：这个是无法被触发的吧，哈哈";
-        //         }
-
-        //         modules.render(text);
-        //     } else {
-        //         modules.render(prop.content.welcome || "欢迎来到本站！");
-        //     }
-        // },
+        welcome: function () {
+            if (document.referrer !== "" && document.referrer.indexOf(current.root) === -1) {
+                var referrer = document.createElement('a');
+                referrer.href = document.referrer;
+                modules.render("欢迎来自 “" + referrer.hostname + "” 的朋友！");
+            } else if ("seasons" in cfg) {
+                cfg.seasons.forEach(({
+                    date,
+                    text
+                }) => {
+                    const now = new Date(),
+                        after = date.split("-")[0],
+                        before = date.split("-")[1] || after;
+                    if ((after.split("/")[0] <= now.getMonth() + 1 && now.getMonth() + 1 <= before.split("/")[0]) && (after.split("/")[1] <= now.getDate() && now.getDate() <= before.split("/")[1])) {
+                        // text = modules.rand(text);
+                        text = text.replace("{year}", now.getFullYear());
+                        modules.render(text, 0, 5000);
+                    }
+                });
+            } else {
+                var text, hour = new Date().getHours();
+                if (hour > 22 || hour <= 5) {
+                    text = '你是夜猫子呀？这么晚还不睡觉，明天起的来嘛';
+                } else if (hour > 5 && hour <= 8) {
+                    text = '早上好！';
+                } else if (hour > 8 && hour <= 11) {
+                    text = '上午好！工作顺利嘛，不要久坐，多起来走动走动哦！';
+                } else if (hour > 11 && hour <= 14) {
+                    text = '中午了，工作了一个上午，现在是午餐时间！';
+                } else if (hour > 14 && hour <= 17) {
+                    text = '午后很容易犯困呢，今天的运动目标完成了吗？';
+                } else if (hour > 17 && hour <= 19) {
+                    text = '傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红~';
+                } else if (hour > 19 && hour <= 21) {
+                    text = '晚上好，今天过得怎么样？';
+                } else if (hour > 21 && hour <= 23) {
+                    text = '已经这么晚了呀，早点休息吧，晚安~';
+                } else {
+                    text = "嗨~ 快来逗我玩吧！";
+                }
+                modules.render(text, 0, 5000);
+            }
+        },
         // // 触摸
         // touch: function () {
         //     current.canvas.onclick = function () {
@@ -161,9 +170,9 @@ var Paul_Pio = function (prop) {
 
             // 更换模型
             elements.skin.onclick = function () {
-                loadlive2d(prop.model[modules.idol()]);
+                loadlive2d(cfg.model[modules.idol()]);
             };
-            if (prop.model.length > 1) current.menu.appendChild(elements.skin);
+            if (cfg.model.length > 1) current.menu.appendChild(elements.skin);
 
             // 关于我
             elements.info.onclick = function () {
@@ -196,31 +205,33 @@ var Paul_Pio = function (prop) {
                 init();
             }
             current.body.appendChild(elements.show);
-        },
-        // custom: function () {
-        //     prop.content.custom.forEach(function (t) {
-        //         if (!t.type) t.type = "default";
-        //         var e = document.querySelectorAll(t.selector);
 
-        //         if (e.length) {
-        //             for (var j = 0; j < e.length; j++) {
-        //                 if (t.type === "read") {
-        //                     e[j].onmouseover = function () {
-        //                         modules.render("想阅读 %t 吗？".replace(/%t/, "“" + this.innerText + "”"));
-        //                     }
-        //                 } else if (t.type === "link") {
-        //                     e[j].onmouseover = function () {
-        //                         modules.render("想了解一下 %t 吗？".replace(/%t/, "“" + this.innerText + "”"));
-        //                     }
-        //                 } else if (t.text) {
-        //                     e[j].onmouseover = function () {
-        //                         modules.render(t.text);
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     });
-        // }
+            current.body.appendChild(dialog);
+        },
+        custom: function () {
+            cfg.mouseover.forEach(function (t) {
+                if (!t.type) t.type = "default";
+                var e = document.querySelectorAll(t.selector);
+
+                if (e.length) {
+                    for (var j = 0; j < e.length; j++) {
+                        if (t.type === "read") {
+                            e[j].onmouseover = function () {
+                                modules.render("想阅读 %t 吗？".replace(/%t/, "“" + this.innerText + "”"));
+                            }
+                        } else if (t.type === "link") {
+                            e[j].onmouseover = function () {
+                                modules.render("想了解一下 %t 吗？".replace(/%t/, "“" + this.innerText + "”"));
+                            }
+                        } else if (t.text) {
+                            e[j].onmouseover = function () {
+                                modules.render(t.text);
+                            }
+                        }
+                    }
+                }
+            });
+        }
     };
 
 
@@ -243,7 +254,7 @@ var Paul_Pio = function (prop) {
         const internalModel = model.internalModel;
         const motionManager = internalModel.motionManager;
         const settings = internalModel.settings;
-        let motion_flag = 1;
+        let motion_flag = false; //是否正在动作标识
         let canvas = current.canvas;
         // Try to remove previous model, if any exists.
         try {
@@ -256,14 +267,11 @@ var Paul_Pio = function (prop) {
         model.scale.set(canvas.height / model.height);
         canvas.width = model.width;
         canvas.height = model.height;
-        // console.log(motionManager.state)
-        console.log(internalModel)
-        // console.log(motionManager.state.currentGroup)
 
-        // if (!(motionManager.state.currentGroup == "Idle")) {
-        // handle tapping
+        // 如果模型被点击
         model.on("hit", hitAreas => {
             let hitA
+            //覆盖多个点击区域下，找出权重最大的
             hitAreas.forEach(t => {
                 settings.hitAreas.forEach(Areas => {
                     if (Areas.Name == t) {
@@ -285,20 +293,19 @@ var Paul_Pio = function (prop) {
                 });
 
             })
-            if (motion_flag) {
+            // 如果模型正在运动，不执行
+            if (!motion_flag) {
                 var motion = hitA.Motion;
                 var t = Math.floor(Math.random() * settings.motions[motion].length);
                 var action = settings.motions[motion][t];
                 model.motion(motion, t);
-                motion_flag = 0;
+                motion_flag = true;
                 if (action.Text) {
                     modules.render(action.Text, action.TextDelay, action.TextDuration);
                 }
                 motionManager.once("motionFinish", (data) => {
-                    motion_flag = 1;
-
+                    motion_flag = false;
                 })
-                console.log(hitA)
             }
 
 
@@ -321,23 +328,48 @@ var Paul_Pio = function (prop) {
         }
 
         // addFrame(model);
-        addHitAreaFrames(model);
+        // addHitAreaFrames(model);
         // console.log(model)
-        console.log(settings)
+        // console.log(settings)
     };
 
     // 模型初始化
     function init(onlyText) {
-        if (!(prop.hidden && modules.isMobile())) {
-            if (!onlyText) {
-                // action.welcome();
-                loadlive2d(prop.model[0]);
+        //    localStorage.getItem("posterGirl") == 1
+
+        if (localStorage.getItem("posterGirl") == 1) {
+            fetch(prop)
+                .then(response => response.json())
+                .then(result => {
+                    cfg = result;
+                    let hidden = false;
+                    if (!(hidden && modules.isMobile())) {
+                        if (!onlyText) {
+                            // action.welcome();
+                            loadlive2d(cfg.model[0]);
+                        }
+                        // if (prop.content.custom) action.custom();
+                    }
+                    action.welcome();
+                    action.buttons();
+                    action.custom();
+                });
+        } else {
+            modules.destroy();
+            // 开启看板娘
+            elements.show.onclick = function () {
+                current.body.classList.remove("hidden");
+                localStorage.setItem("posterGirl", 1);
+                init();
             }
-            // if (prop.content.custom) action.custom();
+            current.body.appendChild(elements.show);
         }
+
+
+
     };
 
-
-    action.buttons();
     init();
+
+
 }
