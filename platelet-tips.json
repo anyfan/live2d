@@ -1,7 +1,9 @@
 {
     "model": [
+        "live2d/model/Diana/Diana.model3.json",
         "live2d/model/xxb/kesshouban_v1.1.model3.json",
-        "live2d/model/Diana/Diana.model3.json"
+        "live2d/model/paimeng/paimeng.model3.json",
+        "live2d/model/kli1/kelit.model3.json"
     ],
     "mouseover": [{
             "selector": ".pio-action .pio-home",
@@ -20,8 +22,7 @@
         {
             "selector": ".pio-action .pio-skin",
             "text": [
-                "我觉得这件衣服还挺好看的。",
-                "变身魔法可真是难学呢。"
+                "想看看我的新朋友吗？"
             ]
         },
         {
@@ -90,10 +91,6 @@
         },
         {
             "date": "06/01",
-            "text": "<span style=\"color:#0099cc;\">儿童节</span>了呢，快活的时光总是短暂，要是永远长不大该多好啊…"
-        },
-        {
-            "date": "06/11",
             "text": "<span style=\"color:#0099cc;\">儿童节</span>了呢，快活的时光总是短暂，要是永远长不大该多好啊…"
         },
         {

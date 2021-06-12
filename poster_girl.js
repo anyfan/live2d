@@ -3,9 +3,9 @@ var Paul_Pio = function (prop) {
     let cfg = {}
     // 写入结构组件
     document.body.insertAdjacentHTML("beforeend", `
-    <div class="pio-container left" id="pio-container">
+    <div class="pio-container right" id="pio-container">
         <div class="pio-action"></div>
-        <canvas id="pio" width="566" height="600" style="touch-action: none; cursor: inherit;"></canvas>
+        <canvas id="pio"></canvas>
     </div>`)
 
 
@@ -206,6 +206,7 @@ var Paul_Pio = function (prop) {
             }
             current.body.appendChild(elements.show);
 
+            //文字面板
             current.body.appendChild(dialog);
         },
         custom: function () {
