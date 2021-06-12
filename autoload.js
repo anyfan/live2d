@@ -1,14 +1,7 @@
-// var home_page = document.location.protocol + '//' + document.location.hostname + ':' + document.location.port + '/' + document.location.pathname + '/'
-// 注意：live2d_path 参数应使用绝对路径
-// console.log(home_page);
-// const live2d_path = "https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
-
-var home_page = "//127.0.0.1:8080/"
 // 封装异步加载资源的方法
-function loadExternalResource(url, type) {
+function loadExternalResource(url, type, c) {
     return new Promise((resolve, reject) => {
         let tag;
-
         if (type === "css") {
             tag = document.createElement("link");
             tag.rel = "stylesheet";
@@ -22,45 +15,34 @@ function loadExternalResource(url, type) {
             tag.onerror = () => reject(url);
             document.head.appendChild(tag);
         }
+        c;
     });
 }
 
 
-const xxb_url = home_page + 'xxb/'
+// if (true) {
+//     Promise.all([
+//         loadExternalResource("/live2d/pio.css", "css"),
+//         loadExternalResource("/live2d/live2dcubismcore.min.js", "js"),
+//         loadExternalResource("/live2d/pixi.min.js", "js"),
+//         loadExternalResource("/live2d/cubism4.min.js", "js"),
+//         loadExternalResource("/live2d/poster_girl.js", "js"),
+//     ]).then(() => {
+//         // new Paul_Pio('/live2d/platelet-tips.json')
+//     });
+// }
 
-
-// 是否为移动设备
-function isMobile() {
-    var ua = window.navigator.userAgent.toLowerCase();
-    ua = ua.indexOf("mobile") || ua.indexOf("android") || ua.indexOf("ios");
-
-    return window.innerWidth < 500 || ua !== -1;
-}
-
-// if (screen.width >= 768) {
-if (!isMobile()) {
-    Promise.all([
-        loadExternalResource(xxb_url + "platelet.css", "css"),
-        loadExternalResource(xxb_url + "live2d.min.js", "js"),
-        // loadExternalResource(xxb_url + "live2d-1.js", "js"),
-        // loadExternalResource(xxb_url + "live2d.js", "js"),
-        // loadExternalResource(xxb_url + "platelet.js", "js")
-    ]).then(() => {
-
-
-
-
-
-        xxb_init()
-        // initWidget({
-        //     waifuPath: live2d_path + "waifu-tips.json",
-        //     //apiPath: "https://live2d.fghrsh.net/api/",
-        //     cdnPath: "https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/"
-        // });
-    });
-}
-
-
+loadExternalResource("/live2d/pio.css", "css").then(() => {
+    loadExternalResource("/live2d/live2dcubismcore.min.js", "js").then(() => {
+        loadExternalResource("/live2d/pixi.min.js", "js").then(() => {
+            loadExternalResource("/live2d/cubism4.min.js", "js").then(() => {
+                loadExternalResource("/live2d/poster_girl.js", "js").then(() => {
+                    new Paul_Pio('/live2d/platelet-tips.json')
+                });
+            });
+        });
+    })
+});
 
 
 

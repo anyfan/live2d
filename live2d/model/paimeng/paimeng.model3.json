@@ -178,29 +178,20 @@
       "Motion": "Tap头部"
     },
     {
-      "Name": "head",
-      "Id": "head_obj"
-    },
-    {
       "Name": "head1",
       "Id": "r_m_h",
       "Motion": "Taphead1"
     },
     {
-      "Name": "head2"
-    },
-    {
       "Name": "headobj",
-      "Id": "head_obj"
+      "Id": "head_obj",
+      "Motion": "Leave"
     },
     {
       "Name": "body",
       "Id": "body",
+      "Order": 1,
       "Motion": "Tap"
-    },
-    {
-      "Name": "hands",
-      "Id": "right_hand"
     },
     {
       "Name": "hands1",
@@ -211,7 +202,6 @@
     {
       "Name": "sl",
       "Id": "pifeng",
-      "Order": 1,
       "Motion": "Shake"
     }
   ],
