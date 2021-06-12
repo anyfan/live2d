@@ -6,6 +6,9 @@
       "paimeng.4096/texture_00.png"
     ],
     "Physics": "paimeng.physics3.json",
+    "PhysicsV2": {
+      "File": "paimeng.physics3.json"
+    },
     "Motions": {
       "Tap": [
         {
@@ -130,6 +133,7 @@
     "KeyTrigger": {
       "Enabled": true
     },
+    "ParamTrigger": {},
     "EyeBlink": {
       "MinInterval": 500,
       "MaxInterval": 6000,
@@ -170,7 +174,8 @@
   "HitAreas": [
     {
       "Name": "头部",
-      "Id": "face"
+      "Id": "face",
+      "Motion": "Tap头部"
     },
     {
       "Name": "head",
@@ -178,7 +183,8 @@
     },
     {
       "Name": "head1",
-      "Id": "r_m_h"
+      "Id": "r_m_h",
+      "Motion": "Taphead1"
     },
     {
       "Name": "head2"
@@ -189,7 +195,8 @@
     },
     {
       "Name": "body",
-      "Id": "body"
+      "Id": "body",
+      "Motion": "Tap"
     },
     {
       "Name": "hands",
@@ -197,12 +204,15 @@
     },
     {
       "Name": "hands1",
-      "Id": "right_hand"
+      "Id": "right_hand",
+      "Order": 2,
+      "Motion": "Start"
     },
     {
       "Name": "sl",
       "Id": "pifeng",
-      "Order": 2
+      "Order": 1,
+      "Motion": "Shake"
     }
   ],
   "Options": {}
