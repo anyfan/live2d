@@ -19,6 +19,10 @@
     user-select: none;
 }
 
+.pio-container.hidden {
+    display: block !important;
+}
+
 .pio-container .pio-show {
     right: -1.2em;
     bottom: -0.2em;
@@ -163,7 +167,7 @@
 
 #pio-container {
     bottom: -0.3rem;
-    z-index: 1;
+    z-index: 3;
     transition: transform 0.3s;
     cursor: grab;
 }
@@ -182,4 +186,5 @@
 
 #pio {
     height: 15rem;
+    /* height: 20rem; */
 }

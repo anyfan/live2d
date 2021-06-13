@@ -1,6 +1,7 @@
 var Paul_Pio = function (prop) {
 
     let cfg = {}
+    var that = this
     // 写入结构组件
     document.body.insertAdjacentHTML("beforeend", `
     <div class="pio-container right" id="pio-container">
@@ -51,18 +52,19 @@ var Paul_Pio = function (prop) {
 
             if (TextDelay || TextDuration) {
                 clearTimeout(this.Delay);
+                clearTimeout(this.Duration);
             } else {
                 TextDelay = 0;
                 TextDuration = 3000;
                 clearTimeout(this.Delay);
+                clearTimeout(this.Duration);
             }
             this.Delay = setTimeout(function () {
                 dialog.classList.add("active");
-                clearTimeout(Duration)
-                var Duration = setTimeout(function () {
-                    dialog.classList.remove("active");
-                }, TextDuration);
             }, TextDelay);
+            this.Duration = setTimeout(function () {
+                dialog.classList.remove("active");
+            }, TextDelay + TextDuration);
 
         },
         // 移除方法
@@ -256,9 +258,11 @@ var Paul_Pio = function (prop) {
         }
         app.stage.addChild(model)
         // fit the window
+
         model.scale.set(canvas.height / model.height);
         canvas.width = model.width;
         canvas.height = model.height;
+
 
         // 如果模型被点击
         model.on("hit", hitAreas => {
@@ -324,22 +328,7 @@ var Paul_Pio = function (prop) {
 
     // 模型初始化
     function init(onlyText) {
-        if (localStorage.getItem("posterGirl") == 1) {
-            fetch(prop)
-                .then(response => response.json())
-                .then(result => {
-                    cfg = result;
-                    let hidden = false;
-                    if (!(hidden && modules.isMobile())) {
-                        if (!onlyText) {
-                            loadlive2d(cfg.model[0]);
-                        }
-                    }
-                    action.welcome();
-                    action.buttons();
-                    action.custom();
-                });
-        } else {
+        if (localStorage.getItem("posterGirl") == 0) {
             modules.destroy();
             // 开启看板娘的方法
             elements.show.onclick = function () {
@@ -348,13 +337,27 @@ var Paul_Pio = function (prop) {
                 init();
             }
             current.body.appendChild(elements.show);
+        } else {
+            fetch(prop)
+                .then(response => response.json())
+                .then(result => {
+                    cfg = result;
+                    let hidden = true; //如果不需要移动端隐藏改为false
+                    if (!(hidden && modules.isMobile())) {
+                        if (!onlyText) {
+                            loadlive2d(cfg.model[0]);
+                        }
+                        localStorage.setItem("posterGirl", 1);
+                        action.welcome();
+                        action.buttons();
+                        action.custom();
+                        that.action = action;
+                    }
+                });
         }
-
 
     };
 
-
     init();
 
-    
 }

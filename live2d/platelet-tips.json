@@ -1,9 +1,9 @@
 {
     "model": [
-        "live2d/model/Diana/Diana.model3.json",
-        "live2d/model/xxb/kesshouban_v1.1.model3.json",
-        "live2d/model/paimeng/paimeng.model3.json",
-        "live2d/model/kli1/kelit.model3.json"
+        "/live2d/model/Diana/Diana.model3.json",
+        "/live2d/model/xxb/kesshouban_v1.1.model3.json",
+        "/live2d/model/paimeng/paimeng.model3.json",
+        "/live2d/model/kli1/kelit.model3.json"
     ],
     "mouseover": [{
             "selector": ".pio-action .pio-home",
@@ -49,6 +49,10 @@
                 "干嘛呢\"你\"，快把手拿开",
                 "鼠…鼠标放错地方了！"
             ]
+        },
+        {
+            "selector": ".index-post-title a",
+            "type": "read"
         }
     ],
     "click": [{

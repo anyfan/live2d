@@ -32,19 +32,25 @@ function loadExternalResource(url, type, c) {
 //     });
 // }
 
+
+var postergirl
 loadExternalResource("/live2d/pio.css", "css").then(() => {
     loadExternalResource("/live2d/live2dcubismcore.min.js", "js").then(() => {
         loadExternalResource("/live2d/pixi.min.js", "js").then(() => {
             loadExternalResource("/live2d/cubism4.min.js", "js").then(() => {
                 loadExternalResource("/live2d/poster_girl.js", "js").then(() => {
-                    new Paul_Pio('/live2d/platelet-tips.json')
+                    postergirl = new Paul_Pio('/live2d/platelet-tips.json')
                 });
             });
-        });
-    })
+        })
+    });
 });
 
 
+// PJAX callback
+// if (localStorage.getItem("posterGirl") == 1) {
+//     postergirl.action.custom()
+// }
 
 console.log(`
   く__,.ヘヽ.        /  ,ー､ 〉
