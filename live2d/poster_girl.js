@@ -342,17 +342,15 @@ var Paul_Pio = function (prop) {
                 .then(response => response.json())
                 .then(result => {
                     cfg = result;
-                    let hidden = true; //如果不需要移动端隐藏改为false
-                    if (!(hidden && modules.isMobile())) {
-                        if (!onlyText) {
-                            loadlive2d(cfg.model[0]);
-                        }
-                        localStorage.setItem("posterGirl", 1);
-                        action.welcome();
-                        action.buttons();
-                        action.custom();
-                        that.action = action;
+                    if (!onlyText) {
+                        loadlive2d(cfg.model[0]);
                     }
+                    localStorage.setItem("posterGirl", 1);
+                    action.welcome();
+                    action.buttons();
+                    action.custom();
+                    that.action = action;
+
                 });
         }
 

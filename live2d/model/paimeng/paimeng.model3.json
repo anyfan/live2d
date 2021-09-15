@@ -65,12 +65,6 @@
       ],
       "Tap头部": [
         {
-          "Name": "嘿嘿嘿羡慕吧",
-          "File": "motions/嘿嘿嘿，羡慕吗.motion3.json",
-          "Sound": "sounds/嘿嘿嘿 羡慕吗.wav",
-          "MotionDuration": 300
-        },
-        {
           "Name": "欸",
           "File": "motions/欸.motion3.json",
           "Sound": "sounds/欸。。.wav"
@@ -130,9 +124,7 @@
   "Controllers": {
     "ParamHit": {},
     "ParamLoop": {},
-    "KeyTrigger": {
-      "Enabled": true
-    },
+    "KeyTrigger": {},
     "ParamTrigger": {},
     "EyeBlink": {
       "MinInterval": 500,
@@ -157,9 +149,7 @@
     },
     "Microphone": {},
     "Transform": {},
-    "FaceTracking": {
-      "Enabled": true
-    },
+    "FaceTracking": {},
     "ParamValue": {},
     "PartOpacity": {},
     "ArtmeshOpacity": {},
@@ -167,9 +157,7 @@
     "ArtmeshCulling": {
       "DefaultMode": 0
     },
-    "IntimacySystem": {
-      "Enabled": true
-    }
+    "IntimacySystem": {}
   },
   "HitAreas": [
     {

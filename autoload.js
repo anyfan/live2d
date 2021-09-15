@@ -1,55 +1,51 @@
 // 封装异步加载资源的方法
 function loadExternalResource(url, type, c) {
-    return new Promise((resolve, reject) => {
-        let tag;
-        if (type === "css") {
-            tag = document.createElement("link");
-            tag.rel = "stylesheet";
-            tag.href = url;
-        } else if (type === "js") {
-            tag = document.createElement("script");
-            tag.src = url;
-        }
-        if (tag) {
-            tag.onload = () => resolve(url);
-            tag.onerror = () => reject(url);
-            document.head.appendChild(tag);
-        }
-        c;
-    });
+  return new Promise((resolve, reject) => {
+    let tag;
+    if (type === "css") {
+      tag = document.createElement("link");
+      tag.rel = "stylesheet";
+      tag.href = url;
+    } else if (type === "js") {
+      tag = document.createElement("script");
+      tag.src = url;
+    }
+    if (tag) {
+      tag.onload = () => resolve(url);
+      tag.onerror = () => reject(url);
+      document.head.appendChild(tag);
+    }
+    c;
+  });
+}
+
+// 是否为移动设备
+function isMobile() {
+  var ua = window.navigator.userAgent.toLowerCase();
+  ua = ua.indexOf("mobile") || ua.indexOf("android") || ua.indexOf("ios");
+  return window.innerWidth < 500 || ua !== -1;
 }
 
 
-// if (true) {
-//     Promise.all([
-//         loadExternalResource("/live2d/pio.css", "css"),
-//         loadExternalResource("/live2d/live2dcubismcore.min.js", "js"),
-//         loadExternalResource("/live2d/pixi.min.js", "js"),
-//         loadExternalResource("/live2d/cubism4.min.js", "js"),
-//         loadExternalResource("/live2d/poster_girl.js", "js"),
-//     ]).then(() => {
-//         // new Paul_Pio('/live2d/platelet-tips.json')
-//     });
-// }
-
-
 var postergirl
-loadExternalResource("/live2d/pio.css", "css").then(() => {
+if (!isMobile()) {
+  loadExternalResource("/live2d/pio.css", "css").then(() => {
     loadExternalResource("/live2d/live2dcubismcore.min.js", "js").then(() => {
-        loadExternalResource("/live2d/pixi.min.js", "js").then(() => {
-            loadExternalResource("/live2d/cubism4.min.js", "js").then(() => {
-                loadExternalResource("/live2d/poster_girl.js", "js").then(() => {
-                    postergirl = new Paul_Pio('/live2d/platelet-tips.json')
-                });
-            });
-        })
+      loadExternalResource("/live2d/pixi.min.js", "js").then(() => {
+        loadExternalResource("/live2d/cubism4.min.js", "js").then(() => {
+          loadExternalResource("/live2d/poster_girl.js", "js").then(() => {
+            postergirl = new Paul_Pio('/live2d/platelet-tips.json')
+          });
+        });
+      })
     });
-});
+  });
+}
 
 
 // PJAX callback
-// if (localStorage.getItem("posterGirl") == 1) {
-//     postergirl.action.custom()
+// if (localStorage.getItem("posterGirl") == 1 && !isMobile()) {
+//   postergirl.action.custom()
 // }
 
 console.log(`
